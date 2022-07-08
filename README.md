@@ -7,6 +7,7 @@ Für diesen Hackathon dient die Applikation nur als Mittel zum Zweck, und die En
 
 ## Architektur und Verzeichnis Struktur
 
+
 <img src="./application/docs/dobib.drawio.png">
 
 Im `/application` Verzeichnis findet ihr drei Unterverzechnisse wieder.
