@@ -67,6 +67,6 @@ jobs:
         # Log out from the Docker registry at the end of a job
         logout: false
     - run: |
-          docker build . --file Dockerfile --tag tumo_${{ matrix.project }}
+          docker build . --file Dockerfile --tag ${{ secrets.REGISTRYSERVER }}/tumo_${{ matrix.project }}
           docker push ${{ secrets.REGISTRYSERVER }}/tumo_${{ matrix.project }}
       working-directory: ./application/${{ matrix.project }}
