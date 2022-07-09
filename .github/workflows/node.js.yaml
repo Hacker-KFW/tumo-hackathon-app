@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
-        dirName: [api, frontend]
+        project: [api, frontend]
 
     steps:    
     - uses: actions/checkout@v3
@@ -27,8 +27,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-      working-directory: dirName
-    - run: npm run build --if-present
-      working-directory: dirName
-    - run: npm test
-      working-directory: dirName
+      working-directory: project
+    # - run: npm run build --if-present
+    #   working-directory: project
+    # - run: npm test
+      # working-directory: project
