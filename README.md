@@ -1,4 +1,5 @@
 # Application
+changed some words.
 
 ## Intro
 
