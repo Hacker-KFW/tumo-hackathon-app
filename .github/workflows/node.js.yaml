@@ -26,7 +26,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      working-directory: ./application/${{ matrix.project }}
+        cache-dependency-path: ./application/${{ matrix.project }}
     # - run: |
     #     ls
     #     cd application
