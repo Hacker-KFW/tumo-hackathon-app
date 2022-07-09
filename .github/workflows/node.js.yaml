@@ -31,9 +31,9 @@ jobs:
     #     ls
     #     cd application
     #     ls
-    # - run: npm ci
-    #   working-directory: ./application/${{ matrix.project }}
-    # - run: npm run build --if-present
-    #   working-directory: ./application/${{ matrix.project }}
-    # - run: npm test
-    #   working-directory: ./application/${{ matrix.project }}
+    - run: npm ci
+      working-directory: ./application/${{ matrix.project }}
+    - run: npm run build --if-present
+      working-directory: ./application/${{ matrix.project }}
+    - run: npm test
+      working-directory: ./application/${{ matrix.project }}
