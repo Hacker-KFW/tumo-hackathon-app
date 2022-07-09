@@ -68,5 +68,5 @@ jobs:
         logout: false
     - run: |
           docker build . --file Dockerfile --tag tumo_${{ matrix.project }}
-          docker push tumo_${{ matrix.project }} ${{ secrets.REGISTRYSERVER }}/tumo_${{ matrix.project }}
+          docker push ${{ secrets.REGISTRYSERVER }}/tumo_${{ matrix.project }}
       working-directory: ./application/${{ matrix.project }}
