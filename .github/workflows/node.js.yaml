@@ -37,3 +37,42 @@ jobs:
       working-directory: ./application/${{ matrix.project }}
     - run: npm test
       working-directory: ./application/${{ matrix.project }}
+      
+
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+        project: [frontend, api, db-seed]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: ./application/${{ matrix.project }}/package-lock.json
+    - name: Docker Login
+      # You may pin to the exact commit or the version.
+      # uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b
+      uses: docker/login-action@v2.0.0
+      with:
+        # Server address of Docker registry. If not set then will default to Docker Hub
+        registry: ${{ secrets.REGISTRYSERVER }}
+        # Username used to log against the Docker registry
+        username: ${{ secrets.ADMINUSER }}
+        # Password or personal access token used to log against the Docker registry
+        password: ${{ secrets.ADMINPASSWORD }}
+        # Specifies whether the given registry is ECR (auto, true or false)
+#         ecr: # optional, default is auto
+        # Log out from the Docker registry at the end of a job
+        logout: false
+    - run: |
+          docker build . --file Dockerfile --tag tumo_${{ matrix.project }}
+          docker push tumo_${{ matrix.project }} ${{ secrets.REGISTRYSERVER }}/tumo_${{ matrix.project }}
+      working-directory: ./application/${{ matrix.project }}
