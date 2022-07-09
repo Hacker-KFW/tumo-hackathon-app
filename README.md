@@ -32,3 +32,13 @@ Die Applikation besteht im wesentlichen aus drei Seiten
 
 > Ihr könnt hier eure Dokumentation zu den Herausforderungen hinzufügen oder euch im Team auf eine eigene Dokumentations Struktur einigen
 
+## Docker Commands
+> In dem Terminal ins `./application` file wechseln
+> 1. `docker compose build`
+> 2. `docker compose up`
+> 3. Die `localhost:80` Seite aufrufen.
+> 4. Enjoy!!
+## Azure Login Commands
+> `az login` > Website einloggen
+> `az acr login --name hackerregister`
+> Enjoy
